@@ -1,0 +1,3 @@
+https://statswithcats.wordpress.com/2010/11/28/secrets-of-good-correlations/
+http://www.eecs.qmul.ac.uk/~norman/blog_articles/p_values.pdf
+http://www.dummies.com/education/math/statistics/what-a-p-value-tells-you-about-statistical-data/
