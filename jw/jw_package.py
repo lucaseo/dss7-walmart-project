@@ -209,7 +209,7 @@ def get_correlation(store_nbr, year, month_start=-1, month_end=-1):
 
             inner[(units, feature, len(a))] = sp.stats.pearsonr(a.astype(float), b)
 
-            correlation[(store_nbr, year, month_start, month_end)] = inner
+            correlation[(store_nbr, year, month_start, month_end-1)] = inner
 
     return correlation
 
@@ -223,11 +223,81 @@ def show_me_pearson(pearson_dict):
     for key,val in pearson_dict.items():
         print(key)
         
-        keys = list(val.keys())
+        if isinstance(val,dict):
+            printee = []
+            
+            keys = list(val.keys())
         
-        keys.sort()
+            keys.sort()
+            
+            printee += [(k,val[k]) for k in keys]
         
-        for each in keys:
-            print('\t',each,val[each])
+        else:
+            printee = val
+        
+        for each in printee:
+            print('\t',each)
+
+def trim_correlation(correlation_dict):
+    '''
+    input : get_correlation's return
+    output : p-value lesser than 0.01, sorted by pearsonr
+    '''
+    keys = correlation_dict.keys()
+    
+    result = dict()
+    
+    for key in keys:
+        inner_dict = correlation_dict[key]
+        item_nbrs = list(set(each[0] for each in inner_dict.keys()))
+        sorted_filtered = filter_sort_inner_dict(inner_dict, item_nbrs)
+        
+        result[key] = sorted_filtered
+        
+    return result            
+
+def filter_sort_inner_dict(inner_dict, item_nbrs):
+    '''
+    input: 
+        1. get_correlation[key]
+        2. item numbers included in 1
+    output: 
+        list that filtered and sorted get_correlation[key] 
+    '''
+    pvalue_filtered = [(key,val) for key,val in inner_dict.items() if val[1] < 0.01]
+    
+    pearsonr_sorted = []
+    
+    for item_nbr in item_nbrs:
+        pearsonr_sorted += sort_inner_dict(item_nbr,pvalue_filtered)
+    
+    return pearsonr_sorted
+
+def sort_inner_dict(item_nbr, filtered):
+    '''
+    input:
+        1. item number that gonna sort
+        2. get_correlation whose p-value is lesser than 0.01
+    output:
+        filtered list sorted by pearsonr with item_nbr
+    '''
+    each_item = [each for each in filtered if each[0][0]==item_nbr]
+            
+    each_item = sorted(each_item, key = lambda each: abs(each[1][0]), reverse=True)
+    
+    return each_item
+
+def identify_item_nbr(store_nbr):
+    '''
+    input: store_nbr
+    output: unique item numbers of store_nbr over 2012~2014
+    '''
+    each_year = [set(item_nbr_tendency_finely(store_nbr,each,graph=False).index) for each in range(2012,2015)]
+
+    for each in each_year:
+        unique = set.union(each)
+    
+    return unique
+
 print('function configuration completed ! ')
 print('Good to go !')
