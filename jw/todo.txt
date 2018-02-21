@@ -1,0 +1,12 @@
+1. outlier 제거
+2. quartile 써서 25% ~ 75%
+3. holiday?
+
+4. item_Nbr vs item_nbr
+5. weather vs weather
+
+6. unhappy index
+
+7. missing value retrieve
+	1. best euclidian similarity
+	2. approximation thru mean
