@@ -5,6 +5,7 @@
 4. item_Nbr vs item_nbr
 5. weather vs weather -> for codesum quantification
 
+
 6. unhappy index
 
 7. missing value retrieve
@@ -14,3 +15,5 @@
 
 8. JOint probability function for get_correlation
 	refer to joint continuous probability function
+
+9. QQ plot for get_correlation
