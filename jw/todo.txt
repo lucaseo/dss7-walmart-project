@@ -1,5 +1,8 @@
 1. outlier 제거
 2. quartile 써서 25% ~ 75%
+2-1. box-whisker diagram with quadratile
+2-2. standard deviation
+2-3. Z-score
 3. holiday?
 
 4. item_Nbr vs item_nbr
@@ -13,7 +16,18 @@
 	2. approximation thru mean
 
 
-8. JOint probability function for get_correlation
+8. Joint probability function for get_correlation
 	refer to joint continuous probability function
 
 9. QQ plot for get_correlation
+9. covariance matrix
+
+10. linear correlation coefficient,
+	non-linear correleation coefficient
+
+11. Be sensitive when you handle outlier
+
+12. A*x = b
+x = A+
+
+13. find MSE for JPF
