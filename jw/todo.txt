@@ -1,5 +1,7 @@
+
 1. outlier 제거
 2. quartile 써서 25% ~ 75%
+2-0. Leverage
 2-1. box-whisker diagram with quadratile
 2-2. standard deviation
 2-3. Z-score
@@ -26,8 +28,17 @@
 	non-linear correleation coefficient
 
 11. Be sensitive when you handle outlier
+When to remove or not
 
 12. A*x = b
 x = A+
 
 13. find MSE for JPF
+
+14. Mean vs Median for store, each item_nbrs.describe()
+same = symmetric
+
+15. Partial Regression plot, CCPR plot for every indepedent variable with dependent variable
+to check explicit outlier
+
+16. y_new = model.predict(x_new)
