@@ -16,22 +16,27 @@ sns.set_style("whitegrid")
 sns.set_color_codes()
 print('import configuration completed !')
 
-print('Data configuration has been started !')
-sales = pd.read_csv('../data/train.csv', parse_dates=['date'])
-keys = pd.read_csv('../data/key.csv')
-weather = pd.read_csv('../data/weather.csv', parse_dates=['date'])
-df_1 = pd.merge(weather, keys)
-df_1 = pd.merge(df_1, sales)
+def df_1():
+    sales = pd.read_csv('../data/train.csv', parse_dates=['date'])
+    keys = pd.read_csv('../data/key.csv')
+    weather = pd.read_csv('../data/weather.csv', parse_dates=['date'])
+    df_1 = pd.merge(weather, keys)
+    df_1 = pd.merge(df_1, sales)
 
-dates = df_1['date'].dt
-df_1['year'] = dates.year
-df_1['month'] = dates.month
-df_1['day'] = dates.day
+    dates = df_1['date'].dt
+    df_1['year'] = dates.year
+    df_1['month'] = dates.month
+    df_1['day'] = dates.day
 
-final_sample = pd.read_csv('../data/01. final_sample')
-trimmed = final_sample.iloc[:, 1:]
+    return df_1
 
-print('Data configuration completed !')
+def final_sample():
+    final_sample = pd.read_csv('../data/01. final_sample')
+    trimmed = final_sample.iloc[:, 1:]
+    
+    return (final_sample, trimmed)
+
+df_1 = df_1()
 
 def find_store(station_nbr):
     '''
