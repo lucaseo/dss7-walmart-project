@@ -14,29 +14,46 @@ import seaborn as sns
 sns.set()
 sns.set_style("whitegrid")
 sns.set_color_codes()
+
 print('import configuration completed !')
 
-def df_1():
+def load_weather():
+    wther = pd.read_csv('../data/weather.csv', parse_dates=['date'])
+    dates = wther['date'].dt
+    wther['year'] = dates.year
+    wther['month'] = dates.month
+    wther['day'] = dates.day
+
+    return wther
+
+def load_train_weather(no_zero=True, weather=False):
     sales = pd.read_csv('../data/train.csv', parse_dates=['date'])
+    if no_zero:
+        sales = sales.loc[sales['units']!=0,:]
+    
     keys = pd.read_csv('../data/key.csv')
-    weather = pd.read_csv('../data/weather.csv', parse_dates=['date'])
-    df_1 = pd.merge(weather, keys)
+    
+    if weather == False:
+        wther = load_weather()
+    else:
+        wther = weather
+    
+    
+    df_1 = pd.merge(wther, keys)
     df_1 = pd.merge(df_1, sales)
 
-    dates = df_1['date'].dt
-    df_1['year'] = dates.year
-    df_1['month'] = dates.month
-    df_1['day'] = dates.day
 
     return df_1
 
-def final_sample():
+def load_final_sample():
     final_sample = pd.read_csv('../data/01. final_sample')
     trimmed = final_sample.iloc[:, 1:]
     
     return (final_sample, trimmed)
 
-df_1 = df_1()
+print('train + key + weather merging started')
+df_1 = load_train_weather()
+print('train + key + weather merging finished')
 
 def find_store(station_nbr):
     '''
@@ -45,7 +62,7 @@ def find_store(station_nbr):
     '''
     
     station = df_1[df_1['station_nbr']==station_nbr]
-    return station['store_nbr'].unique()
+    return list(station['store_nbr'].unique())
 
 def show_tendency(store_number):
     '''
