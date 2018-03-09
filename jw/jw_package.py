@@ -18,7 +18,7 @@ sns.set_color_codes()
 print('import configuration completed !')
 
 def load_weather():
-    wther = pd.read_csv('../data/weather.csv', parse_dates=['date'])
+    wther = pd.read_csv('../data/basic/weather.csv', parse_dates=['date'])
     dates = wther['date'].dt
     wther['year'] = dates.year
     wther['month'] = dates.month
@@ -27,11 +27,11 @@ def load_weather():
     return wther
 
 def load_train_weather(no_zero=True, weather=False):
-    sales = pd.read_csv('../data/train.csv', parse_dates=['date'])
+    sales = pd.read_csv('../data/basic/train.csv', parse_dates=['date'])
     if no_zero:
         sales = sales.loc[sales['units']!=0,:]
     
-    keys = pd.read_csv('../data/key.csv')
+    keys = pd.read_csv('../data/basic/key.csv')
     
     if weather == False:
         wther = load_weather()
@@ -52,7 +52,7 @@ def load_final_sample():
     return (final_sample, trimmed)
 
 print('train + key + weather merging started')
-df_1 = load_train_weather()
+df_1 = load_train_weather(no_zero=True)
 print('train + key + weather merging finished')
 
 def find_store(station_nbr):
