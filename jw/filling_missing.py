@@ -176,7 +176,7 @@ def drop_all_missing(station_nbr):
         
     return nan_weather, how_many, spare_columns
 
-def filling_missing_by_closest(station_nbr):
+def filling_missing_by_closest(station_nbr,precision=100):
     # 빼기 전 all_missing인 feature,
     # sunset,sunrise,codesum과 같은 비연속 데이터는 제외
     
@@ -184,6 +184,7 @@ def filling_missing_by_closest(station_nbr):
     
     # intact한 row들
     no_nan = weather.dropna(axis=0, how='any')
+    no_nan = no_nan.sample(len(no_nan)//precision)
     nan_index = list(set(weather.index) - set(no_nan.index))
     
     # missing이 하나라도 있는 row들
@@ -198,6 +199,8 @@ def filling_missing_by_closest(station_nbr):
     print('\t','filling by best_close processing..')
 
     for each in nan.index:
+        if each%100==0:
+            print(each)
         nan_row = nan.loc[each, :]
         nan_z = pd.Series([(nan_row[f] - table[f]['mean']) /
                            table[f]['std'] for f in feature])
@@ -214,13 +217,12 @@ def filling_missing_by_closest(station_nbr):
             diff = diff.mean()
 
             distance[idx] = diff
-            
+
         best_close_idx = min(distance, key=distance.get)
         missing_feature = nan_row.isnull()
-
         nan_row[missing_feature] = no_nan.loc[best_close_idx, missing_feature]
         weather.loc[each, :] = nan_row
-
+        
     print('\t','filling by best_close finished !')
         
     weather['codesum'] = spare_columns['codesum']
