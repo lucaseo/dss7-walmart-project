@@ -19,7 +19,7 @@ sns.set_color_codes()
 print('import configuration completed !')
 
 def load_weather():
-    wther = pd.read_csv('weather.csv', parse_dates=['date'])
+    wther = pd.read_csv('data/weather.csv', parse_dates=['date'])
     dates = wther['date'].dt
     wther['year'] = dates.year
     wther['month'] = dates.month
@@ -28,11 +28,11 @@ def load_weather():
     return wther
 
 def load_train_weather(no_zero=True, weather=pd.DataFrame()):
-    sales = pd.read_csv('train.csv', parse_dates=['date'])
+    sales = pd.read_csv('data/train.csv', parse_dates=['date'])
     if no_zero:
         sales = sales.loc[sales['units']!=0,:]
     
-    keys = pd.read_csv('key.csv')
+    keys = pd.read_csv('data/key.csv')
     
     if len(weather)==0:
         wther = load_weather()
