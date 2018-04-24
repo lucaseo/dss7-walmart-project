@@ -1,0 +1,15 @@
+https://statswithcats.wordpress.com/2010/11/28/secrets-of-good-correlations/
+http://www.eecs.qmul.ac.uk/~norman/blog_articles/p_values.pdf
+http://www.dummies.com/education/math/statistics/what-a-p-value-tells-you-about-statistical-data/
+
+
+Correlation coefficient != simple linear regression slope
+Correlation coefficeint == Standarized linear regression slope
+
+아웃라이어를 제거해야 전체의 경향을 잘 반영할 수 있음
+wikidepia참조
+
+https://www.quora.com/What-is-the-difference-between-Pearson-R-and-Simple-linear-regression
+
+Table of critival values of pearsonr
+http://www.statisticssolutions.com/table-of-critical-values-pearson-correlation/
