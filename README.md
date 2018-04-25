@@ -1,5 +1,5 @@
-
-#  [Walmart Recruiting : Sales in Stormy Weather (Regression Analysis)](https://www.kaggle.com/c/walmart-recruiting-sales-in-stormy-weather)
+##### Fastcampus Data Science School Team Project : Regression Analysis
+#  [Walmart Recruiting : Sales in Stormy Weather](https://www.kaggle.com/c/walmart-recruiting-sales-in-stormy-weather)
 
 <img src="https://github.com/lucaseo/dss7-walmart-project/blob/master/archive/final/Presentation_fin/data/walmart.jpg">
 
