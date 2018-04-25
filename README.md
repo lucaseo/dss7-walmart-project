@@ -33,8 +33,11 @@
 > #### Root-Mean-Squared-Logarithmic-Error(RMSLE)  
 > <img src="https://github.com/lucaseo/dss7-walmart-project/blob/master/archive/rmsle_metrics.png">  
 > n is the number of rows in the test set  
+
 > p is your predicted units sold  
+
 > a is the actual units sold  
+
 > log(x) is the natural logarithm  
 
 
