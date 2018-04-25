@@ -30,7 +30,13 @@
 > - Sales count prediction template of 111 items throughout 44 Walmart between 1 ARR 2013 ~ 26 DEC 2014 
 
 ### (3) : Evaluation
-> #### Root-Mean-Squared-Logarithmic-Error(RMSLE)
+> #### Root-Mean-Squared-Logarithmic-Error(RMSLE)  
+> <img src="https://github.com/lucaseo/dss7-walmart-project/blob/master/archive/rmsle_metrics.png">  
+> n is the number of rows in the test set  
+> p is your predicted units sold  
+> a is the actual units sold  
+> log(x) is the natural logarithm  
+
 
 
 
