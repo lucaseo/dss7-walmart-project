@@ -1,14 +1,10 @@
-##### Fast Campus Data Science School 7th Team Project 2 Classification
+
 #  [Walmart Recruiting : Sales in Stormy Weather (Regression Analysis)](https://www.kaggle.com/c/walmart-recruiting-sales-in-stormy-weather)
 
 <img src="https://github.com/lucaseo/dss7-walmart-project/blob/master/archive/final/Presentation_fin/data/walmart.jpg">
 
 #### [Click for Project Report](https://github.com/lucaseo/dss7-walmart-project/blob/master/project_report.ipynb)
 
-### Team : Tetris
-> - [Lee JW](https://github.com/anylee)
-> - [Seo WY](https://github.com/lucaseo)
-> - [Kim DH](https://github.com/)
 
 # [ Overview ]
 
@@ -45,13 +41,23 @@
 > - Missing Data
 
 ### (2) Preprocessing
-> - Missing Data Inputation
-> - Encoding
+> - Various Missing Weather Data Inputation approaches
+>   - by mean
+>   - by z-score of closest kneighboring data
+>   - by refering to previous day weather + filling out weather data by meteorological formulas
+> - Parsing datas
+> - Encoding of categorial variables 
+>   - codesum
+>   - weekday, weekend
 
 ### (3) Modeling
-> - OLS with weather features
-> - OLS without weather features
-> - R-squared : 0.9079
+> - OLS with weather features (1)
+>   - Removed outliers
+>   - Removed features with high multicolinearity based on Variance Inflation Factor
+> - OLS without weather features (2)
+> - Apply log on target variable
+
+> - R-squared : 0.90
 
 ### (4) Prediction
 
@@ -59,3 +65,11 @@
 > - Total Teams : 485 teams
 > - Final Score : 0.19943 (RMSLE)
 > - Leaderboard : 317 / 486
+
+
+## What could've been better : Lesson learned
+- EDA focusing on how features affect target variables helps gaining insights of feature engineering while modeling.
+- Log(x+1) on target variable instead of log(x). Needs better understanding of evaluation metrics.
+- Giving interaction between features could generate coefficient that better explains the target variable.
+- Weather data is based on timeseries --> Time series analysis could help find relationship between weather and item sales.
+- Additional information of US federal, national holiday and seasonal shopping event.
