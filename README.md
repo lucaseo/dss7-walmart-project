@@ -8,7 +8,7 @@
 
 # [ Overview ]
 
-### (1) Dataset : 
+### (1) Dataset :
 > #### Walmart Sales Records and Corresponding Weather Records
 
 ### (2) Objective :
@@ -16,7 +16,7 @@
 
 <br>
 
-### (3) Dataset Description : 
+### (3) Dataset Description :
 > #### train : 4617600 rows, 4 columns  
 > - Sales record of 111 items throughout 45 Walmart between 1 JAN 2012 ~ 31 DEC 2014
 
@@ -27,17 +27,15 @@
 > - Weather data of each weather station between 1 JAN 2012  ~ 31 OCT 2014. (Specific descriptions on weather columns can be found in project report)
 
 > #### test : 526917 rows, 3 columns
-> - Sales count prediction template of 111 items throughout 44 Walmart between 1 ARR 2013 ~ 26 DEC 2014 
+> - Sales count prediction template of 111 items throughout 44 Walmart between 1 ARR 2013 ~ 26 DEC 2014
 
 ### (3) : Evaluation
 > #### Root-Mean-Squared-Logarithmic-Error(RMSLE)  
 > <img src="https://github.com/lucaseo/dss7-walmart-project/blob/master/archive/rmsle_metrics.png">  
+  
 > n is the number of rows in the test set  
-
 > p is your predicted units sold  
-
 > a is the actual units sold  
-
 > log(x) is the natural logarithm  
 
 
@@ -45,7 +43,7 @@
 
 # [Contents]
 
-### (1) EDA 
+### (1) EDA
 > - Tendency Check
 > - Missing Data
 
@@ -55,7 +53,7 @@
 >   - by z-score of closest kneighboring data
 >   - by refering to previous day weather + filling out weather data by meteorological formulas
 > - Parsing datas
-> - Encoding of categorial variables 
+> - Encoding of categorial variables
 >   - codesum
 >   - weekday, weekend
 
